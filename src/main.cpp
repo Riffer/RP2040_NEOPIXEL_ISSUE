@@ -3,19 +3,22 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
-#include <NeoPixelConnect.h>
+#include <Adafruit_NeoPixel.h>
 
 // comment to skip bug
-//#define DEBUGME
+#define DEBUGME
 
 #define PIN_IBUS_SRV_RX (11u)
 SerialPIO iBusSerial_IN(SerialPIO::NOPIN, PIN_IBUS_SRV_RX);
 
-NeoPixelConnect p(PIN_NEOPIXEL, 1);
-#define MAX_INTENSITY 5
+Adafruit_NeoPixel p(1, PIN_NEOPIXEL, NEO_GRB + NEO_KHZ800);
+
+#define MAX_INTENSITY 3
 #define RND_BRIGHT ((uint8_t)random(0, MAX_INTENSITY))
-#define SHOW_RND_PIXEL p.neoPixelSetValue(0, RND_BRIGHT, RND_BRIGHT, RND_BRIGHT, true);
-#define SHOW_NO_PIXEL p.neoPixelClear();
+#define SHOW_RND_PIXEL                                                         \
+    p.setPixelColor(0, p.Color(RND_BRIGHT, RND_BRIGHT, RND_BRIGHT)); \
+    p.show();
+#define SHOW_NO_PIXEL p.clear();
 
 void setup1()
 {
