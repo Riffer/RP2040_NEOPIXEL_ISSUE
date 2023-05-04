@@ -11,5 +11,5 @@ kills SerialPIO because lacking usage of framework for state machine resulting i
 
 * Adafruit/Adafruit NeoPixel @ ^1.11.0
 
-loop() works - TODO: check that SerialPIO receives data
+loop() works - SerialPIO receives data at 115200
 
